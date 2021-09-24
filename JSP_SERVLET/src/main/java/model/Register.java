@@ -39,6 +39,9 @@ public class Register {
 		this.idsubject = idsubject;
 	}
 	
-	
+	public String toString() {
+		return this.id + " " + this.idstudent +  " " + this.idsubject;
+		
+	}
 	
 }

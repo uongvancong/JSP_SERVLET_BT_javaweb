@@ -9,25 +9,26 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import model.Student;
-import mapper.StudentMapper;
-import service.IStudentService;
+import mapper.SubjectMapper;
+import model.Subject;
+import service.ISubjectService;
+ 
 
-public class StudentServiceImpl implements IStudentService {
+public class SubjectServiceImpl implements ISubjectService {
 	@Override
-	public void insertStudent(Student student) {
+	public void insertSubject(Subject subject) {
 		Reader reader;
 		SqlSession session = null;
 		try {
-			reader = Resources.getResourceAsReader("StudentSqlMapConfig.xml");
+			reader = Resources.getResourceAsReader("SubjectSqlMapConfig.xml");
 
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			session = sqlSessionFactory.openSession();
 
-			// create student mapper
-			StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+			// create subject mapper
+			SubjectMapper subjectMapper = session.getMapper(SubjectMapper.class);
 
-			studentMapper.insert(student);
+			subjectMapper.insert(subject);
 			session.commit();
 			System.out.println("insert sucessfully");
 
@@ -44,20 +45,20 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public void updateStudent(Student student) {
+	public void updateSubject(Subject subject) {
 		Reader reader;
 		SqlSession session = null;
 		try {
-			reader = Resources.getResourceAsReader("StudentSqlMapConfig.xml");
+			reader = Resources.getResourceAsReader("SubjectSqlMapConfig.xml");
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			session = sqlSessionFactory.openSession();
 
-			// create student mapper
-			StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+			// create subject mapper
+			SubjectMapper subjectMapper = session.getMapper(SubjectMapper.class);
 
-			// update student
+			// update subject
 
-			studentMapper.update(student);
+			subjectMapper.update(subject);
 			session.commit();
 			System.out.println("update sucessfully");
 
@@ -73,21 +74,21 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public void deleteStudentById(long studentId) {
+	public void deleteSubjectById(long subjectId) {
  
-		// delete student
+		// delete subject
 		Reader reader;
 		SqlSession session = null;
 		try {
-			reader = Resources.getResourceAsReader("StudentSqlMapConfig.xml");
+			reader = Resources.getResourceAsReader("SubjectSqlMapConfig.xml");
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			session = sqlSessionFactory.openSession();
 
-			// create student mapper
-			StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+			// create subject mapper
+			SubjectMapper subjectMapper = session.getMapper(SubjectMapper.class);
 
-			// delete student
-			studentMapper.delete(studentId);
+			// delete subject
+			subjectMapper.delete(subjectId);
 
 			session.commit();
 
@@ -104,25 +105,25 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public List<Student> selectAllStudent() {
+	public List<Subject> selectAllSubject() {
 
 		Reader reader;
 		SqlSession session = null;
 		try {
 
-			reader = Resources.getResourceAsReader("StudentSqlMapConfig.xml");
+			reader = Resources.getResourceAsReader("SubjectSqlMapConfig.xml");
 
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 
 			session = sqlSessionFactory.openSession();
 
-			// create student mapper
-			StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+			// create subject mapper
+			SubjectMapper subjectMapper = session.getMapper(SubjectMapper.class);
 
-			// show list student
-			List<Student> listStudents = studentMapper.getAll();
+			// show list subject
+			List<Subject> listSubjects = subjectMapper.getAll();
 
-			return listStudents;
+			return listSubjects;
 
 		} catch (IOException e) {
 
@@ -137,20 +138,20 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public Student selectStudentById(long studentId) {
+	public Subject selectSubjectById(long subjectId) {
 		Reader reader;
 		SqlSession session = null;
 		try {
-			reader = Resources.getResourceAsReader("StudentSqlMapConfig.xml");
+			reader = Resources.getResourceAsReader("SubjectSqlMapConfig.xml");
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			session = sqlSessionFactory.openSession();
 
-			// create student mapper
-			StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+			// create subject mapper
+			SubjectMapper subjectMapper = session.getMapper(SubjectMapper.class);
 
-			// get student by Id
+			// get subject by Id
 
-			return studentMapper.getById(studentId);
+			return subjectMapper.getById(subjectId);
 
 		} catch (IOException e) {
 			return null;
