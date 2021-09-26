@@ -56,8 +56,7 @@
 										onclick="xoaHang( ${item.id} )">Delete</button>
 									<input type="button" onclick="suaHang( ${item.id} )"
 										value="Edit" class="btn btn-success"> <input
-										type="button" onclick="showSubjectList( ${item.id} )"
-										value="Subject Infor" class="btn btn-info">
+										type="button" onclick="showSubjectList( ${item.id} )" value="Subject Infor" class="btn btn-info">
 								</div>
 							</td>
 						</tr>

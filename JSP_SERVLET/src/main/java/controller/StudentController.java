@@ -42,7 +42,7 @@ public class StudentController extends HttpServlet {
 		List<Register> listRegister = null;
 		
 		
-/*
+ 
 		String idClick = req.getParameter("idclick");
 		System.out.println("idClick = " + idClick); 
 		
@@ -53,14 +53,14 @@ public class StudentController extends HttpServlet {
 				tmp = Long.parseLong(idClick);
 				System.out.println("idClick = " + tmp); 
   				
-				// listRegister = registerService.selectRegisterByStudentId(tmp);
+				   listRegister = registerService.selectRegisterByStudentId(tmp);
  				 
 				  
 			}
 			 
 		}
-		 */
-		listRegister = registerService.selectAllRegister();
+		 
+	//	listRegister = registerService.selectAllRegister();
 		 
 		 
 		if(listRegister != null) {
