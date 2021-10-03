@@ -44,7 +44,7 @@ public class StudentController extends HttpServlet {
 		
  
 		String idClick = req.getParameter("idclick");
-		System.out.println("idClick = " + idClick); 
+		 
 		
 		if(checkNumber(idClick)) {
 			long tmp;
@@ -63,11 +63,7 @@ public class StudentController extends HttpServlet {
 	//	listRegister = registerService.selectAllRegister();
 		 
 		 
-		if(listRegister != null) {
-			for(Register r: listRegister) {
-				System.out.println(r.toString());
-			}
-		}
+	
 		 
 		req.getSession().setAttribute("register2", listRegister);
 

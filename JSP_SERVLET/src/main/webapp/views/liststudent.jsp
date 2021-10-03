@@ -106,6 +106,7 @@
 
 			</div>
 			<div>
+			<p id="displayName"/>
 			<table
 				class="table table-striped table-hover table-bordered table-sm ">
 				<thead style="background-color: #4267B2; color: white;">
@@ -115,7 +116,8 @@
 
 						<th class="col-sm-4">#</th>
 				</thead>
-				<tbody>
+				<tbody id="displayBody">
+					 
 					<c:forEach var="item" items="${register2}">
 						<tr>
 							<td>${item.id}</td>
@@ -129,7 +131,7 @@
 								</div>
 							</td>
 						</tr>
-					</c:forEach>
+					</c:forEach>  
 				</tbody>
 			</table>
 		</div>
@@ -164,23 +166,28 @@
                       
                     });
                    
-                    // var url = "student?iddelete=-1&idedit=-1&idclick="+i+"&name=1&age=1&address=1";
-                   var url = "student?idclick="+i;
-                   
-                    if (window.XMLHttpRequest) {
-                     request = new XMLHttpRequest();
-                    } else if (window.ActiveXObject) {
-                     request = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                   
-                    try {
-                     
-                     request.open("GET", url, true);
-                     request.send();
-                     console.log("da send xong");
-                    } catch (e) {
-                     alert("Unable to connect to server");
-                    }
+                    $.ajax({
+        				url: 'update',
+        				type: 'POST',
+        				dataType: 'json',
+        				data:  {"id":i},
+        				success: function(data) {
+        				 	window.console.log(data);
+        				 	 
+        			 
+        					 	$('#displayName').html("your data is: " + data.id + " " + data.idstudent + " "+data.idsubject);
+        					  
+        					 	document.getElementById("displayBody").innerHTML = '<tr>' +
+        							'<td>'+data.id + '</td>'+
+        							'<td>'+data.idstudent + '</td>'+
+        							'<td>'+data.idsubject + '</td>'+
+
+        						'</tr>'; 
+        				  
+        				 		
+        				}
+
+        			});
                 }
                 
 
